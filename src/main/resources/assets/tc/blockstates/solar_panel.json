@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"": {"model": "fc:block/solar_panel"}
+		"": {"model": "tc:block/solar_panel"}
 	}
 }

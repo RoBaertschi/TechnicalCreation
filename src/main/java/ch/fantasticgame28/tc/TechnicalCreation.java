@@ -1,6 +1,8 @@
 package ch.fantasticgame28.tc;
 
 import ch.fantasticgame28.tc.block.ModBlocks;
+import ch.fantasticgame28.tc.blockentity.ModBlockEntity;
+import ch.fantasticgame28.tc.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,8 @@ public class TechnicalCreation implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		ModBlocks.registerBlocks();
+		ModItems.registerItems();
+		ModBlockEntity.registerBlockEntities();
 		LOGGER.info("Hello Fabric world!");
 	}
 }
