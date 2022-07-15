@@ -3,17 +3,17 @@
   "id": "tc",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Technical Creation",
+  "description": "",
   "authors": [
-    "Me!"
+    "Fantasticgame28"
   ],
   "contact": {
     "homepage": "",
     "sources": "https://github.com/RoBaertschi/TechnicalCreation"
   },
 
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/tc/icon.png",
 
   "environment": "*",

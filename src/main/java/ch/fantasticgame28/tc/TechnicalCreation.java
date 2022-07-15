@@ -12,13 +12,14 @@ public class TechnicalCreation implements ModInitializer {
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final String MOD_ID = "tc";
-	public static final Logger LOGGER = LoggerFactory.getLogger("tc");
+	public static final Logger LOGGER = LoggerFactory.getLogger("Technical Creation");
 
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		ModBlockEntity.registerBlockEntities();
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
 		ModBlockEntity.registerBlockEntities();

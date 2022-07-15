@@ -1,5 +1,6 @@
 package ch.fantasticgame28.tc.block.custom;
 
+import ch.fantasticgame28.tc.TechnicalCreation;
 import ch.fantasticgame28.tc.blockentity.ModBlockEntity;
 import ch.fantasticgame28.tc.blockentity.custom.SolarPanelBlockEntity;
 import net.minecraft.block.*;
@@ -23,11 +24,13 @@ public class SolarPanelBlock extends BlockWithEntity {
         // With inheriting from BlockWithEntity this defaults to INVISIBLE, so we need to change that!
         return BlockRenderType.MODEL;
     }
+
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntity.SOLAR_PANEL_BLOCK_ENTITY, (world1, pos, state1, be) -> SolarPanelBlockEntity.tick(world1, pos, state1, be));
+        return checkType(type, ModBlockEntity.SOLAR_PANEL_BLOCK_ENTITY, SolarPanelBlockEntity::tick);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.cuboid(0f, 0f, 0f, 1f, 0.3125f, 1.0f);

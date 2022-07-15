@@ -1,9 +1,9 @@
-# Fabric Example Mod
+# Technical Creation
 
-## Setup
+Technical Creation is Tech mod for Fabric. It uses the Energy
+from [Tech Reborn Energy](https://github.com/TechReborn/Energy).
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+## Blocks:
+### Solar Panel
 
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+Produces 10 Energy per Tick and can store 20000 Energy.
