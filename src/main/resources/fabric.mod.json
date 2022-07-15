@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "ch.fantasticgame28.tc.TechnicalCreation"
+    ],
+    "client": [
+      "ch.fantasticgame28.tc.TechnicalCreationClient"
     ]
   },
   "mixins": [
