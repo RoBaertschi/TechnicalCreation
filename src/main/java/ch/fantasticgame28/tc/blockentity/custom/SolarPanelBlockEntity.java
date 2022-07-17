@@ -3,15 +3,14 @@ package ch.fantasticgame28.tc.blockentity.custom;
 import ch.fantasticgame28.tc.TechnicalCreation;
 import ch.fantasticgame28.tc.blockentity.ModBlockEntity;
 import ch.fantasticgame28.tc.gui.SolarPanelScreenHandler;
-import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -35,9 +34,33 @@ public class SolarPanelBlockEntity extends BlockEntity implements NamedScreenHan
         }
     };
 
+    protected final PropertyDelegate propertyDelegate;
+
 
     public SolarPanelBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntity.SOLAR_PANEL_BLOCK_ENTITY, pos, state);
+        propertyDelegate = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> (int) SolarPanelBlockEntity.this.energyStorage.amount;
+                    case 1 -> (int) SolarPanelBlockEntity.this.energyStorage.capacity;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                if (index == 0) {
+                    SolarPanelBlockEntity.this.energyStorage.amount = value;
+                }
+            }
+
+            @Override
+            public int size() {
+                return 2;
+            }
+        };
     }
 
     public static void tick(World world1, BlockPos pos, BlockState state1, SolarPanelBlockEntity be) {
@@ -60,7 +83,6 @@ public class SolarPanelBlockEntity extends BlockEntity implements NamedScreenHan
                 }
 
             }
-
 
         }
         be.markDirty();
@@ -89,7 +111,7 @@ public class SolarPanelBlockEntity extends BlockEntity implements NamedScreenHan
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return new SolarPanelScreenHandler(syncId);
+        return new SolarPanelScreenHandler(syncId, this.propertyDelegate);
     }
 
     @Override

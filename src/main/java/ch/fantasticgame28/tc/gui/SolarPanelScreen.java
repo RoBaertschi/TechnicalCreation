@@ -7,6 +7,7 @@ import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 
 public class SolarPanelScreen extends HandledScreen<SolarPanelScreenHandler> {
@@ -14,6 +15,8 @@ public class SolarPanelScreen extends HandledScreen<SolarPanelScreenHandler> {
 
     public SolarPanelScreen(SolarPanelScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        playerInventoryTitle = new TranslatableText("");
+        titleY += 40;
     }
 
     @Override
@@ -24,6 +27,10 @@ public class SolarPanelScreen extends HandledScreen<SolarPanelScreenHandler> {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
+
+
+        drawTexture(matrices, 50 + x, 62 + y,
+                176, 1, handler.getProgress(), 15);
     }
 
     @Override
