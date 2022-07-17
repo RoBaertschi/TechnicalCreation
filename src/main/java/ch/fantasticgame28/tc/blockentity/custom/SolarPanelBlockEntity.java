@@ -66,7 +66,7 @@ public class SolarPanelBlockEntity extends BlockEntity implements NamedScreenHan
     public static void tick(World world1, BlockPos pos, BlockState state1, SolarPanelBlockEntity be) {
         if(!world1.isClient) {
             if (be.energyStorage.amount < be.energyStorage.capacity &&
-            world1.isDay()) {
+            world1.isDay() && world1.isSkyVisible(pos)) {
                 be.energyStorage.amount += 3;
             }
             for (int x = 0; x < 6; x++) {
