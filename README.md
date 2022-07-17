@@ -6,4 +6,4 @@ from [Tech Reborn Energy](https://github.com/TechReborn/Energy).
 ## Blocks:
 ### Solar Panel
 
-Produces 10 Energy per Tick and can store 20000 Energy.
+Produces 3 On Day Energy per Tick and can store 20000 Energy.
