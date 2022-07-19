@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "heated=false": {
+      "model": "tc:block/heater"
+    },
+    "heated=true": {
+      "model": "tc:block/heater_heated"
+    }
+  }
+}

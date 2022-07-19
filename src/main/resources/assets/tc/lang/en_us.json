@@ -1,5 +1,9 @@
 {
   "block.tc.solar_panel": "Solar Panel",
+  "block.tc.heater": "Heater",
 
-  "item.tc.solar_panel": "Solar Panel"
+  "item.tc.solar_panel": "Solar Panel",
+  "item.tc.heater": "Heater",
+
+  "itemGroup.tc.general": "Technical Creation"
 }
