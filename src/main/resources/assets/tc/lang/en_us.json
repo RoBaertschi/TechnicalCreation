@@ -5,5 +5,9 @@
   "item.tc.solar_panel": "Solar Panel",
   "item.tc.heater": "Heater",
 
-  "itemGroup.tc.general": "Technical Creation"
+  "itemGroup.tc.general": "Technical Creation",
+  "itemGroup.tc.general.tab.everything": "Technical Creation",
+  "itemGroup.tc.general.tab.machines": "Machines",
+  "itemGroup.tc.general.tab.generators": "Generators",
+  "itemGroup.tc.general.button.github": "Github"
 }

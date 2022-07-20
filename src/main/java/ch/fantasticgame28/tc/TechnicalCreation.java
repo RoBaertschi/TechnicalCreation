@@ -32,6 +32,5 @@ public class TechnicalCreation implements ModInitializer {
 		ModItems.registerItems();
 		ModBlockEntity.registerBlockEntities();
 		ModScreenHandler.registerScreenHandler();
-		LOGGER.info("Hello Fabric world!");
 	}
 }
