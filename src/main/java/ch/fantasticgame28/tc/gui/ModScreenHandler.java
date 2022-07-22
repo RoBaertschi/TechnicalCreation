@@ -14,9 +14,13 @@ import net.minecraft.util.registry.Registry;
 public class ModScreenHandler {
 
     public static final ScreenHandlerType<SolarPanelScreenHandler> SOLAR_PANEL_SCREEN_HANDLER;
+    public static final ScreenHandlerType<HeaterScreenHandler> HEATER_SCREEN_HANDLER;
 
     static {
-        SOLAR_PANEL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(TechnicalCreation.MOD_ID, "solar_panel_screen_handler"), (int syncId, PlayerInventory inventory) -> new SolarPanelScreenHandler(syncId));
+        SOLAR_PANEL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(TechnicalCreation.MOD_ID, "solar_panel_screen_handler"),
+                (int syncId, PlayerInventory inventory) -> new SolarPanelScreenHandler(syncId));
+        HEATER_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(TechnicalCreation.MOD_ID, "heater_screen_handler"),
+                HeaterScreenHandler::new);
     }
 
 

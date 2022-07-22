@@ -3,9 +3,11 @@ package ch.fantasticgame28.tc.gui;
 import ch.fantasticgame28.tc.TechnicalCreation;
 import ch.fantasticgame28.tc.blockentity.custom.SolarPanelBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.slot.Slot;
 
 public class SolarPanelScreenHandler extends ScreenHandler {
 
@@ -27,6 +29,13 @@ public class SolarPanelScreenHandler extends ScreenHandler {
         int maxEnergy = this.propertyDelegate.get(1);
 
         return energyAmount != 0 ? (int)(((float)energyAmount / (float) maxEnergy) * 100f * (75f / 100f)) : 0;
+    }
+
+    @Override
+    public ItemStack transferSlot(PlayerEntity player, int invSlot) {
+
+
+        return ItemStack.EMPTY;
     }
 
 

@@ -7,16 +7,20 @@ import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Identifier;
 
-public class SolarPanelScreen extends HandledScreen<SolarPanelScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier(TechnicalCreation.MOD_ID, "textures/gui/generator/solar_panel_screen.png");
+public class HeaterScreen extends HandledScreen<HeaterScreenHandler> {
+    private static final Identifier TEXTURE =
+            new Identifier(TechnicalCreation.MOD_ID, "textures/gui/heater_screen.png");
 
-    public SolarPanelScreen(SolarPanelScreenHandler handler, PlayerInventory inventory, Text title) {
+    public HeaterScreen(HeaterScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
-        playerInventoryTitle = Text.translatable("");
-        titleY += 40;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
     }
 
     @Override
@@ -28,21 +32,12 @@ public class SolarPanelScreen extends HandledScreen<SolarPanelScreenHandler> {
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
+        if(handler.isCrafting()) {
+            drawTexture(matrices, x + 84, y + 22, 176, 14, handler.getScaledProgress(), 36);
+        }
 
-        drawTexture(matrices, 50 + x, 62 + y,
-                176, 1, handler.getProgress(), 15);
-    }
+        drawTexture(matrices, x + 18, y + 33 + 14 - handler.getScaledEnergy(), 176,
+                14 - handler.getScaledEnergy(), 14, handler.getScaledEnergy());
 
-    @Override
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
-        drawMouseoverTooltip(matrices, mouseX, mouseY);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
     }
 }

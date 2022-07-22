@@ -1,6 +1,5 @@
 package ch.fantasticgame28.tc.blockentity.custom;
 
-import ch.fantasticgame28.tc.TechnicalCreation;
 import ch.fantasticgame28.tc.blockentity.ModBlockEntity;
 import ch.fantasticgame28.tc.gui.SolarPanelScreenHandler;
 import net.minecraft.block.BlockState;
@@ -13,7 +12,6 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -27,7 +25,7 @@ import team.reborn.energy.api.base.SimpleEnergyStorage;
 public class SolarPanelBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, IImplementedInventory {
 
     public final SimpleEnergyStorage energyStorage = new SimpleEnergyStorage(
-            5*4000, 0, 20) {
+            4*4000, 0, 20) {
         @Override
         protected void onFinalCommit() {
             markDirty();
@@ -66,7 +64,7 @@ public class SolarPanelBlockEntity extends BlockEntity implements NamedScreenHan
     public static void tick(World world1, BlockPos pos, BlockState state1, SolarPanelBlockEntity be) {
         if(!world1.isClient) {
             if (be.energyStorage.amount < be.energyStorage.capacity &&
-            world1.isDay() && world1.isSkyVisible(pos)) {
+                    world1.isDay() && world1.isSkyVisible(pos)) {
                 be.energyStorage.amount += 3;
             }
             for (int x = 0; x < 6; x++) {
@@ -105,7 +103,7 @@ public class SolarPanelBlockEntity extends BlockEntity implements NamedScreenHan
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
+        return Text.translatable(getCachedState().getBlock().getTranslationKey());
     }
 
     @Nullable
